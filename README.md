@@ -39,12 +39,12 @@ Choix techniques:
   - Grafana : visualisation des données
   - influxdb: Base de données timeseries
   - Telegraf: Pour envoyer la data vers influxdb
-  - init_influx_db.py: Script python pour mettre en place de la données sur 3 mois
+  - Importer: Dossier contenant le Script python pour mettre en place de la données sur 3 mois (docker python 3.7) 
 
 Docker-compose avec Grafana et influxdb.
 Telegraf installé depuis les sources. 
 connexion sur  localhost:3000 puis configuration manuelle de grafana, connexion avec influxdb ...
-configuration de telegraf. (on a pris les outputs data et cpu pour l'instant pour tester).
+configuration de telegraf. (on a pris les outputs disk et cpu pour l'instant pour tester).
 
 To be continued
 
