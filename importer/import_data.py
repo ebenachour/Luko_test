@@ -10,11 +10,10 @@ INFLUXDB_HOST = "localhost"
 INFLUXDB_PORT = 8086
 
 def main():
-    nb_day = 1  # number of day to generate time series
+    nb_day = 30  # number of day to generate time series
     timeinterval_min = 1  # create an event every minute
     total_records =24 * nb_day
     now = datetime.datetime.today()
-    metric = "cpu"
     series = []
 
     for i in range(0, total_records):
@@ -29,9 +28,9 @@ def main():
                 "time": past_date.strftime ("%Y-%m-%dT%H:%M:%SZ'"),
                 "measurement": 'disk',
                 'fields':  {
-                    'free': str(free),
-                    'used_percent': str(used_percent),
-                    'total': str(total),
+                    'free': free,
+                    'used_percent': used_percent,
+                    'total': total,
                 },
                 'tags': {
                     "device": "sda10",

@@ -1,0 +1,20 @@
+#### Downsapling 1 minute
+
+CREATE database minute_data
+
+CREATE RETENTION POLICY "quarter" ON "minute_data" DURATION 12w REPLICATION 1
+
+
+ CREATE CONTINUOUS QUERY "cq_1minute" ON "telegraf" BEGIN SELECT mean("used_percent") AS "mean_used_percent"  INTO "minute_data"."downsampled_orders" FROM "disk" WHERE device = '/home/ebenachour/.Private' GROUP BY time(1m)
+END
+
+
+#### Downsampling 15 minutes
+
+CREATE database quarter_datas
+
+CREATE RETENTION POLICY "4years" ON "quarter_datas" DURATION (52x3)w REPLICATION 1
+
+
+ CREATE CONTINUOUS QUERY "cq_15minute" ON "telegraf" BEGIN SELECT mean("used_percent") AS "mean_used_percent"  INTO "quarter_datas"."downsampled_orders" FROM "disk" WHERE device = '/home/ebenachour/.Private' GROUP BY time(1m)
+END
