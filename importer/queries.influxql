@@ -1,3 +1,7 @@
+# Retention policy for telegraf database
+
+CREATE RETENTION POLICY 'quarter' on 'telegraf' DURATION 12w REPLICATION 1
+
 #### Downsapling 1 minute
 
 CREATE database minute_data
